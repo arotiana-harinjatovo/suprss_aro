@@ -1,0 +1,115 @@
+.export-import-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Permet aux sections de passer à la ligne si nécessaire */
+}
+
+.export-section {
+  width: 48%;
+  margin: 20px 0;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #6060b1, #9292bf);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.export-section:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.section-export-title {
+  margin-top: -0.2rem;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #2b1c30;
+  font-weight: 600;
+}
+
+.export-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.export-label {
+  font-weight: 500;
+  color: #21112e;
+  font-size: 1rem;
+}
+
+.export-select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #b3c1ec;
+  background-color: #dfe4f7;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+  margin-left: 11px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.export-select:hover {
+  border-color: #bac7eb;
+}
+
+.export-button {
+  padding: 8px 12px;
+  background-color: #6363e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 10px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.export-button:hover {
+  background-color: #9898e7;
+  transform: scale(1.03);
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.custom-file-label {
+  padding: 8px 12px;
+  background-color: #f0eef8;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #333;
+  transition: border-color 0.3s ease;
+  margin-left: 10px;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+  .export-import-container {
+    flex-direction: column;
+  }
+
+  .export-section {
+    width: 100%;
+  }
+
+  .export-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .export-select,
+  .export-button,
+  .custom-file-label {
+    margin-left: 0;
+    width: 100%;
+  }
+}

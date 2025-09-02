@@ -1,0 +1,88 @@
+/* === Formulaire d'inscription === */
+.register-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: rgb(182, 158, 227);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #4a4a8c;
+    margin: 10px auto;
+}
+
+.register-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.register-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4a4a8c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.register-form button:hover {
+    background-color: #3a3a7c;
+}
+
+
+/* Conteneur des boutons */
+.oauth-login-section {
+  display: flex;
+  flex-direction: column;      /* empile les boutons verticalement */
+  align-items: center;         /* centre horizontalement */
+  justify-content: center;     /* facultatif, si tu veux centrer verticalement dans le parent */
+  gap: 10px;                   /* espace entre les boutons */
+  margin-top: 20px;            /* espace au-dessus si nécessaire */
+}
+
+/* Style des boutons */
+.oauth-login-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  width: 100%;             
+  max-width: 560px; 
+}
+
+/* Facultatif : ajuste l'image si tu préfères le faire ici plutôt qu’en inline */
+.oauth-login-button img {
+  width: 20px;
+  margin-right: 8px;
+}
+
+
+

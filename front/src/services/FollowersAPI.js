@@ -1,0 +1,73 @@
+import axios from 'axios';
+
+const API_URL = 'http://localhost:8000/followers';
+
+
+export const sendFriendRequest = async (userId, token) => {
+  return axios.post(
+    `${API_URL}/friend-request`,
+    { receiver_id: userId },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+};
+
+
+export const acceptFriendRequest = (friendshipId, token) =>
+  axios.post(`${API_URL}/accept-friend/${friendshipId}`, null, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+
+export const removeFriend = async (friendshipId, token) => {
+  const response = await fetch(`${API_URL}/remove-friend/${friendshipId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.detail || 'Erreur lors de la suppression.');
+  }
+
+  return await response.json();
+};
+
+
+export const followUser = (followedId, token) =>
+  axios.post(`${API_URL}/follow`, 
+    { followed_id: followedId },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }
+  );
+
+
+export const unfollowUser = async (followId, token) => {
+  const response = await fetch(`${API_URL}/unfollow/${followId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.detail || 'Erreur lors du désabonnement.');
+  }
+
+  return await response.json();
+};
+
+

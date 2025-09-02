@@ -1,0 +1,237 @@
+
+/* ---- CONTAINER ---- */
+.notification-page {
+  padding: 2.5rem;
+  max-width: 1000px;
+  margin: auto;
+  background: linear-gradient(135deg, #d4c2e8, #dcd3dd);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ---- TITRE ---- */
+.notification-title {
+  text-align: center;
+  color: #775094;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+  margin-top: 45px;
+}
+
+.notification-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #9333ea, #3b82f6);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ---- LISTE ---- */
+.notification-list {
+  list-style: none;
+  padding: 0;
+}
+
+.notification-list li {
+  border: 1px solid #e5e7eb;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  background-color: #f9fafb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.notification-list li:hover {
+  transform: translateY(-2px);
+}
+
+.notification-list li.unread {
+  background-color: #ede9f3;
+  font-weight: 600;
+}
+
+/* ---- ACTIONS ---- */
+.notification-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* ---- BOUTONS ---- */
+.notif-btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.read-btn {
+  background-color: #e0e7ff;
+  color: #1e3a8a;
+}
+
+.read-btn:hover {
+  background-color: #c7d2fe;
+}
+
+.delete-btn {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.delete-btn:hover {
+  background-color: #fecaca;
+}
+
+.accept-btn {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.accept-btn:hover {
+  background-color: #a7f3d0;
+}
+
+/* ---- STATUT ---- */
+.notification-status {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+
+
+/* Styles spécifiques à la pop-up notifications */
+
+/* Conteneur principal */
+.notification-container {
+  padding: 1rem;
+}
+
+/* Liste des notifications */
+.notification-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Élément de notification */
+.notification-container li {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+/* Notification non lue */
+.notification-container li.unread {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+/* Icône de notification avec badge */
+.notification-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown de notifications */
+.notification-dropdown {
+  position: fixed;
+  top: 60px;
+  right: 5px;
+  width: 260px;
+  max-height: 350px;
+  padding: 8px;
+  background-color: #f4ecf7;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  z-index: 1000;
+  font-size: 0.8rem;
+  color: #585f7d;
+}
+
+/* Titre du dropdown */
+.notification-dropdown h4 {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #9671a3;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+/* Contenu des notifications */
+.notification-item p,
+.notification-item small {
+  font-size: 0.75rem;
+  margin: 0;
+  padding-bottom: 5px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* Lien "voir tout" */
+.see-all {
+  text-align: center;
+  padding: 8px;
+  font-weight: 600;
+  color: #9671a3;
+  cursor: pointer;
+  border-top: 1px solid #eee;
+  transition: background-color 0.2s ease;
+}
+
+.see-all:hover {
+  background-color: #b47fda;
+  border-radius: 10px;
+}
+
+
+.notification-dropdown::-webkit-scrollbar {
+  width: 4px; 
+}
+
+.notification-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 6px 0; 
+}
+
+.notification-dropdown::-webkit-scrollbar-thumb {
+  background-color: #9671a3;
+  border-radius: 8px;
+}
+
+.notification-dropdown::-webkit-scrollbar-thumb:hover {
+  background-color: #b47fda;
+}
+
+
+
+

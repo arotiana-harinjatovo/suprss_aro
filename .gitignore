@@ -1,0 +1,46 @@
+# Fichiers de configuration sensibles
+*.key
+*.pem
+
+# Dossiers de build ou de cache
+__pycache__/
+dist/
+build/
+node_modules/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichier génère
+readme
+requi
+
+# Python
+__pycache__/
+*.py[cod]
+*.env
+*.sqlite3
+*.log
+
+# FastAPI / Alembic
+alembic.ini
+.env
+instance/
+*.db
+
+# Node / React / Vite
+node_modules/
+dist/
+.vite/
+
+# Docker
+*.pid
+*.sock
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

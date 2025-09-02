@@ -1,0 +1,407 @@
+/* ---- CONTAINER PRINCIPAL ---- */
+.profil-main {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 1rem;
+}
+
+/* ---- SECTIONS GAUCHE & DROITE ---- */
+.profil-left,
+.profil-right {
+  flex: 1 1 48%;
+  min-width: 250px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ---- CARTE DE PROFIL ---- */
+.profil-container {
+  background: linear-gradient(135deg, #d4c2e8, #dcd3dd);
+  padding: 2.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* ---- TITRE ---- */
+.profil-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #3b0764;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow-wrap: break-word;
+}
+
+.profil-container h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #9333ea, #3b82f6);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ---- CHAMPS ---- */
+.profil-field {
+  margin: 10px 0;
+}
+
+.profil-label {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 8px;
+  display: block;
+  word-break: break-word;
+}
+
+/* ---- ZONE DE VALEUR ---- */
+.profil-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  max-width: 100%;
+  overflow: hidden;
+  gap: 8px;
+}
+
+/* Empêche le dépassement du texte */
+.profil-value span {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+  flex: 1;
+}
+
+/* Icône (edit, eye, etc.) */
+.profil-value svg {
+  flex-shrink: 0;
+  color: #3b82f6;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.profil-value svg:hover {
+  color: #2563eb;
+}
+
+/* ---- ROW GLOBALE ---- */
+.profil-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 1rem;
+  background: #ede9f3;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+/* ---- INLINE VALUE (ex: bio ou grande info) ---- */
+.profil-value-inline {
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 500;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+/* ---- BOUTONS ---- */
+.button-update,
+.button-delete,
+.button-toggle-form {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.button-update {
+  background: linear-gradient(90deg, #6366f1, #9333ea);
+  color: white;
+}
+
+.button-update:hover {
+  background: linear-gradient(90deg, #4f46e5, #7e22ce);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.button-delete {
+  background-color: #f3e3e3;
+  color: #b91c1c;
+}
+
+.button-delete:hover {
+  background-color: #f9cccc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.15);
+}
+
+.button-toggle-form {
+  background-color: #7eb68e;
+  color: #274c2c;
+}
+
+.button-toggle-form:hover {
+  background-color: #6aa87c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(126, 182, 142, 0.3);
+}
+
+
+.profil-field button {
+  background: linear-gradient(90deg, #6366f1, #9333ea);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.profil-field button:hover {
+  background: linear-gradient(90deg, #4f46e5, #7e22ce);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.profil-social-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* espace entre les boutons */
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.profil-social-buttons button {
+  flex: 1 1 auto;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #ec94a9;
+  color: #374151;
+  transition: all 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.profil-social-buttons button:hover {
+  background-color: #bcccec;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.btn-active {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-active:hover {
+  background-color: #0056b3;
+}
+
+.btn-muted {
+  background-color: #ccc;
+  color: #666;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: not-allowed;
+}
+
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+  border: none;
+}
+
+.btn-warning {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #a71d2a;
+}
+
+
+/* ---- SECTION DROITE (recherche, interactions) ---- */
+.profil-right .profil-container {
+  background: linear-gradient(135deg, #d4c2e8, #dcd3dd);
+  border: 1px solid #e5e7eb;
+}
+
+.profil-right h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.profil-right input[type="text"],
+.profil-right input[type="email"] {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 1rem;
+  font-size: 15px;
+}
+
+/* ---- Paramètrage ---- */
+
+.profil-settings {
+  background: linear-gradient(135deg, #d4c2e8, #dcd3dd);
+  padding: 2.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profil-settings h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.profil-settings select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  margin-top: 0.5rem;
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  margin-left: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4b5563;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+
+.slider-container {
+  display: flex;
+  justify-content: center; /* centre horizontalement */
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* ---- Responsive ---- */
+
+
+@media (max-width: 768px) {
+  .profil-main {
+    flex-direction: column;
+  }
+
+  .profil-left,
+  .profil-right {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.texte-limite {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%; /* ou une largeur fixe comme 250px */
+  display: block;
+}
+
+

@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Actualit\u00e9 Le Monde",
+    "url": "https://www.lemonde.fr/rss/une.xml",
+    "description": "Journal Le Monde",
+    "tags": [
+      "Journla",
+      "News"
+    ],
+    "update_frequency": "daily",
+    "is_active": true,
+    "is_shared": false,
+    "article_limit": 5
+  },
+  {
+    "title": "Ycombinator",
+    "url": "https://news.ycombinator.com/rss",
+    "description": "Hacker News 2",
+    "tags": [
+      "Informatique"
+    ],
+    "update_frequency": "daily",
+    "is_active": true,
+    "is_shared": false,
+    "article_limit": 5
+  },
+  {
+    "title": "Youtube - News Actualit\u00e9",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCH6ppHEvV3_WIXEwmhv9HEg",
+    "description": "Actualit\u00e9 moderne sur l'avanc\u00e9 technologique",
+    "tags": [
+      "Tech",
+      "Actu"
+    ],
+    "update_frequency": "hourly",
+    "is_active": true,
+    "is_shared": false,
+    "article_limit": 5
+  }
+]

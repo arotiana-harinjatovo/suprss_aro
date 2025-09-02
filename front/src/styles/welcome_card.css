@@ -1,0 +1,45 @@
+.welcome-card {
+  background: linear-gradient(135deg, #f2eef3, #dbb6e0); /* léger dégradé */
+  padding: 2.5rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-card h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #3b0764;
+  margin-bottom: 0.8rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.welcome-card h1 span {
+  background: linear-gradient(90deg, #9333ea, #3b82f6, #10b981);
+  background-size: 200% auto; /* pour animer le dégradé */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.welcome-card .subtitle {
+  font-size: 1.2rem;
+  color: #374151;
+  margin-top: 0.5rem;
+  font-family: 'Quicksand', sans-serif;
+}

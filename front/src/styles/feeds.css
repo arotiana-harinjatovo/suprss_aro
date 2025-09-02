@@ -1,0 +1,235 @@
+.toggle-feed-form {
+  display: block;
+  align-items: center;
+  gap: 8px;
+  margin: 2rem auto;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #3a3a7c, #c9a0d9);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+  box-shadow: 0 4px 10px rgba(209, 161, 233, 0.3);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.toggle-feed-form:hover {
+  background: linear-gradient(135deg, #c9a0d9, #3a3a7c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(186, 104, 183, 0.4);
+}
+
+.toggle-feed-form:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin: 40px 0 20px;
+  color: #4a4a8c;
+  font-family: 'Quicksand', sans-serif;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #6565ee;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Responsive grid */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 0 10px;
+}
+
+/* Form Flux RSS */
+.add-feed-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+  background-color: #e9e1f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-feed-form input,
+.add-feed-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.add-feed-form button {
+  background-color: #6767c5;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.add-feed-form button:hover {
+  background-color: #3a3a7c;
+}
+
+.feeds-grid {
+  display: flex;
+  gap: 12px; 
+  overflow-x: auto;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.feeds-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.feeds-grid::-webkit-scrollbar-thumb {
+  background-color: rgba(150, 124, 170, 0.3); /* transparent par défaut */
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.feeds-grid::-webkit-scrollbar-thumb:hover {
+  background-color: #6767b7; /* couleur visible au survol */
+}
+
+
+.feed-card {
+  flex: 0 0 auto; /* empêche la carte de s'étirer */
+  width: 260px; 
+  scroll-snap-align: start;
+  background-color: rgb(215, 212, 238);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 14px;
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.feed-card:hover {
+  transform: scale(1.02);
+}
+
+
+.feed-card h3 {
+  font-size: 1.2rem;
+  color: #6565ee;
+  background-color: #f5f5ff;
+  padding: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(101, 101, 238, 0.2);
+}
+
+.feed-card p {
+  font-size: 0.9rem;
+  color: #181717;
+  line-height: 1.4;
+}
+
+.feed-card a {
+  align-self: flex-end;
+  background-color: #6565ee;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(101, 101, 238, 0.3);
+}
+
+.feed-card a:hover {
+  background-color: #4b4bda;
+  transform: translateY(-2px);
+}
+
+/* ----- Liste des flux ----- */
+.feed-list {
+  gap: 16px;
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
+.feed-list-item {
+  background-color: #f5f5ff;
+  border-left: 6px solid #6565ee;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(101, 101, 238, 0.1);
+  transition: transform 0.2s ease;
+  font-family: 'Quicksand', sans-serif;
+  margin-top: 15px;
+}
+
+.feed-list-item:hover {
+  transform: translateX(4px);
+  background-color: #eaeaff;
+}
+
+.feed-list-item h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #3a3a7c;
+}
+
+.feed-list-item p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.feed-list-item button {
+  margin-top: 10px;
+  background-color: #6565ee;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
+  margin-right: 8px;
+  min-width: 250px;
+}
+
+.feed-list-item button:hover {
+  background-color: #4b4bda;
+}
+
+.last-updated {
+  font-size: 0.9rem;
+  color: #979393;
+  margin-top: auto;
+}
+
+.last-updated strong {
+  color: #857e7e;
+}
