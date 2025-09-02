@@ -1,0 +1,140 @@
+[rss_feeds]
+    *id {label:"INTEGER"}
+    url {label:"VARCHAR"}
+[rss_articles]
+    *id {label:"INTEGER"}
+    author {label:"VARCHAR"}
+    feed_id {label:"INTEGER"}
+    link {label:"VARCHAR"}
+    published_at {label:"TIMESTAMP"}
+    source_name {label:"VARCHAR"}
+    summary {label:"VARCHAR"}
+    tags {label:"JSON"}
+    title {label:"VARCHAR"}
+[users]
+    *id {label:"INTEGER"}
+    email {label:"VARCHAR"}
+    full_name {label:"VARCHAR"}
+    hashed_password {label:"VARCHAR"}
+    is_active {label:"BOOLEAN"}
+    username {label:"VARCHAR"}
+[collections]
+    *id {label:"INTEGER"}
+    creator_id {label:"INTEGER"}
+    description {label:"TEXT"}
+    name {label:"VARCHAR"}
+[feed_access]
+    *id {label:"INTEGER"}
+    can_delete {label:"BOOLEAN"}
+    can_edit {label:"BOOLEAN"}
+    feed_id {label:"INTEGER"}
+    user_id {label:"INTEGER"}
+[friendships]
+    *id {label:"INTEGER"}
+    created_at {label:"TIMESTAMP"}
+    receiver_id {label:"INTEGER"}
+    requester_id {label:"INTEGER"}
+    status {label:"VARCHAR"}
+[follows]
+    *id {label:"INTEGER"}
+    created_at {label:"TIMESTAMP"}
+    followed_id {label:"INTEGER"}
+    follower_id {label:"INTEGER"}
+[user_feed_association]
+    *feed_id {label:"INTEGER"}
+    *user_id {label:"INTEGER"}
+    article_limit {label:"INTEGER"}
+    description {label:"VARCHAR"}
+    is_active {label:"BOOLEAN"}
+    is_shared {label:"BOOLEAN"}
+    last_updated {label:"TIMESTAMP"}
+    tags {label:"JSON"}
+    title {label:"VARCHAR"}
+    update_frequency {label:"VARCHAR"}
+[collection_feeds]
+    *id {label:"INTEGER"}
+    added_at {label:"TIMESTAMP"}
+    added_by {label:"INTEGER"}
+    collection_id {label:"INTEGER"}
+    feed_id {label:"INTEGER"}
+[collection_articles]
+    *id {label:"INTEGER"}
+    added_at {label:"TIMESTAMP"}
+    article_id {label:"INTEGER"}
+    collection_id {label:"INTEGER"}
+[collection_members]
+    *id {label:"INTEGER"}
+    collection_id {label:"INTEGER"}
+    role {label:"VARCHAR(7)"}
+    user_id {label:"INTEGER"}
+[collection_permissions]
+    *id {label:"INTEGER"}
+    can_add_feed {label:"BOOLEAN"}
+    can_comment {label:"BOOLEAN"}
+    can_read {label:"BOOLEAN"}
+    collection_id {label:"INTEGER"}
+    user_id {label:"INTEGER"}
+[notifications]
+    *id {label:"INTEGER"}
+    collection_id {label:"INTEGER"}
+    comment_id {label:"INTEGER"}
+    friendship_id {label:"INTEGER"}
+    is_read {label:"BOOLEAN"}
+    message {label:"VARCHAR"}
+    receiver_id {label:"INTEGER"}
+    requester_id {label:"INTEGER"}
+    timestamp {label:"TIMESTAMP"}
+    type {label:"VARCHAR"}
+[comments]
+    *id {label:"INTEGER"}
+    article_id {label:"INTEGER"}
+    created_at {label:"TIMESTAMP"}
+    text {label:"VARCHAR"}
+    user_id {label:"INTEGER"}
+[user_article_association]
+    *article_id {label:"INTEGER"}
+    *user_id {label:"INTEGER"}
+    is_favorite {label:"BOOLEAN"}
+    is_read {label:"BOOLEAN"}
+[collection_user_association]
+    *collection_id {label:"INTEGER"}
+    *user_id {label:"INTEGER"}
+    is_active {label:"BOOLEAN"}
+    role {label:"VARCHAR"}
+[collection_messages]
+    *id {label:"INTEGER"}
+    collection_id {label:"INTEGER"}
+    content {label:"TEXT"}
+    timestamp {label:"TIMESTAMP"}
+    user_id {label:"INTEGER"}
+rss_feeds."id" 1--* rss_articles."feed_id"
+users."id" ?--* collections."creator_id"
+users."id" ?--* feed_access."user_id"
+rss_feeds."id" ?--* feed_access."feed_id"
+users."id" 1--* friendships."requester_id"
+users."id" 1--* friendships."receiver_id"
+users."id" 1--* follows."follower_id"
+users."id" 1--* follows."followed_id"
+users."id" 1--* user_feed_association."user_id"
+rss_feeds."id" 1--* user_feed_association."feed_id"
+rss_feeds."id" ?--* collection_feeds."feed_id"
+collections."id" ?--* collection_feeds."collection_id"
+users."id" ?--* collection_feeds."added_by"
+collections."id" ?--* collection_articles."collection_id"
+rss_articles."id" ?--* collection_articles."article_id"
+users."id" ?--* collection_members."user_id"
+collections."id" ?--* collection_members."collection_id"
+collections."id" ?--* collection_permissions."collection_id"
+users."id" ?--* collection_permissions."user_id"
+friendships."id" ?--* notifications."friendship_id"
+users."id" 1--* notifications."requester_id"
+users."id" 1--* notifications."receiver_id"
+collections."id" ?--* notifications."collection_id"
+rss_articles."id" 1--* comments."article_id"
+users."id" 1--* comments."user_id"
+rss_articles."id" 1--* user_article_association."article_id"
+users."id" 1--* user_article_association."user_id"
+collections."id" 1--* collection_user_association."collection_id"
+users."id" 1--* collection_user_association."user_id"
+collections."id" 1--* collection_messages."collection_id"
+users."id" 1--* collection_messages."user_id"

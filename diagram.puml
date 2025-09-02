@@ -1,0 +1,178 @@
+@startuml
+
+entity rss_feeds {
+  *id : INTEGER
+  url : VARCHAR
+}
+
+entity rss_articles {
+  *id : INTEGER
+  author : VARCHAR
+  feed_id : INTEGER
+  link : VARCHAR
+  published_at : TIMESTAMP
+  source_name : VARCHAR
+  summary : VARCHAR
+  tags : JSON
+  title : VARCHAR
+}
+
+entity users {
+  *id : INTEGER
+  email : VARCHAR
+  full_name : VARCHAR
+  hashed_password : VARCHAR
+  is_active : BOOLEAN
+  username : VARCHAR
+}
+
+entity collections {
+  *id : INTEGER
+  creator_id : INTEGER
+  description : TEXT
+  name : VARCHAR
+}
+
+entity feed_access {
+  *id : INTEGER
+  can_delete : BOOLEAN
+  can_edit : BOOLEAN
+  feed_id : INTEGER
+  user_id : INTEGER
+}
+
+entity friendships {
+  *id : INTEGER
+  created_at : TIMESTAMP
+  receiver_id : INTEGER
+  requester_id : INTEGER
+  status : VARCHAR
+}
+
+entity follows {
+  *id : INTEGER
+  created_at : TIMESTAMP
+  followed_id : INTEGER
+  follower_id : INTEGER
+}
+
+entity user_feed_association {
+  *feed_id : INTEGER
+  *user_id : INTEGER
+  article_limit : INTEGER
+  description : VARCHAR
+  is_active : BOOLEAN
+  is_shared : BOOLEAN
+  last_updated : TIMESTAMP
+  tags : JSON
+  title : VARCHAR
+  update_frequency : VARCHAR
+}
+
+entity collection_feeds {
+  *id : INTEGER
+  added_at : TIMESTAMP
+  added_by : INTEGER
+  collection_id : INTEGER
+  feed_id : INTEGER
+}
+
+entity collection_articles {
+  *id : INTEGER
+  added_at : TIMESTAMP
+  article_id : INTEGER
+  collection_id : INTEGER
+}
+
+entity collection_members {
+  *id : INTEGER
+  collection_id : INTEGER
+  role : VARCHAR(7)
+  user_id : INTEGER
+}
+
+entity collection_permissions {
+  *id : INTEGER
+  can_add_feed : BOOLEAN
+  can_comment : BOOLEAN
+  can_read : BOOLEAN
+  collection_id : INTEGER
+  user_id : INTEGER
+}
+
+entity notifications {
+  *id : INTEGER
+  collection_id : INTEGER
+  comment_id : INTEGER
+  friendship_id : INTEGER
+  is_read : BOOLEAN
+  message : VARCHAR
+  receiver_id : INTEGER
+  requester_id : INTEGER
+  timestamp : TIMESTAMP
+  type : VARCHAR
+}
+
+entity comments {
+  *id : INTEGER
+  article_id : INTEGER
+  created_at : TIMESTAMP
+  text : VARCHAR
+  user_id : INTEGER
+}
+
+entity user_article_association {
+  *article_id : INTEGER
+  *user_id : INTEGER
+  is_favorite : BOOLEAN
+  is_read : BOOLEAN
+}
+
+entity collection_user_association {
+  *collection_id : INTEGER
+  *user_id : INTEGER
+  is_active : BOOLEAN
+  role : VARCHAR
+}
+
+entity collection_messages {
+  *id : INTEGER
+  collection_id : INTEGER
+  content : TEXT
+  timestamp : TIMESTAMP
+  user_id : INTEGER
+}
+
+rss_feeds ||--o{ rss_articles
+users |o--* collections
+users |o--* feed_access
+rss_feeds |o--* feed_access
+users ||--o{ friendships
+users ||--o{ friendships
+users ||--o{ follows
+users ||--o{ follows
+users ||--o{ user_feed_association
+rss_feeds ||--o{ user_feed_association
+rss_feeds |o--* collection_feeds
+collections |o--* collection_feeds
+users |o--* collection_feeds
+collections |o--* collection_articles
+rss_articles |o--* collection_articles
+users |o--* collection_members
+collections |o--* collection_members
+collections |o--* collection_permissions
+users |o--* collection_permissions
+friendships |o--* notifications
+users ||--o{ notifications
+users ||--o{ notifications
+collections |o--* notifications
+rss_articles ||--o{ comments
+users ||--o{ comments
+rss_articles ||--o{ user_article_association
+users ||--o{ user_article_association
+collections ||--o{ collection_user_association
+users ||--o{ collection_user_association
+collections ||--o{ collection_messages
+users ||--o{ collection_messages
+
+@enduml
