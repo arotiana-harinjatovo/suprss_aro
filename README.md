@@ -82,8 +82,8 @@ Ce projet vise à centraliser :
 ### 4.2 Étapes d’installation
 ```bash
 # Cloner le dépôt
-git clone https://github.com/mon-org/lecteur-rss.git
-cd lecteur-rss
+git clone https://github.com/arotiana-harinjatovo/suprss_aro.git
+cd suprss_aro
 
 # Lancer les services Docker
 docker-compose up --build -d
