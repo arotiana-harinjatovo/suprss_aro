@@ -13,9 +13,7 @@ L’application repose sur une architecture **Fullstack** avec un **backend Fast
 
 ### 1.2 Public visé
 - Développeurs qui souhaitent déployer, maintenir ou contribuer au projet.  
-
 - Utilisateurs finaux intéressés par un lecteur RSS collaboratif.  
-
 - Administrateurs système chargés de l’installation et du monitoring.  
 
 ### 1.3 Technologies utilisées
@@ -33,25 +31,18 @@ L’application repose sur une architecture **Fullstack** avec un **backend Fast
 Les flux RSS sont souvent sous-exploités car les lecteurs classiques manquent de fonctionnalités collaboratives.  
 Ce projet vise à centraliser :
 - La lecture des flux RSS.  
-
 - Le partage de collections entre utilisateurs. 
-
 - La gestion de commentaires et de notifications.  
 
 ### 2.2 Valeur ajoutée du produit
 - Interface intuitive pour la lecture et le suivi des flux.  
-
 - Gestion collaborative des collections.  
-
 - Notifications et interactions sociales (followers, commentaires).  
-
 - Tâches automatisées pour l’actualisation des flux.  
 
 ### 2.3 Cas d’utilisation principaux
 - Un utilisateur suit et lit ses flux RSS.  
-
 - Une équipe partage une collection thématique de flux. 
-
 - Un administrateur configure des permissions pour les membres d’une collection.  
 
 ---
@@ -60,22 +51,15 @@ Ce projet vise à centraliser :
 
 ### 3.1 Vue d’ensemble
 - Application web (frontend React).  
-
 - API REST exposée par FastAPI.  
-
 - Système d’authentification OAuth2 / JWT.  
-
 - Tâches planifiées via Celery + Redis.  
 
 ### 3.2 Fonctionnalités principales
 - Gestion des utilisateurs et authentification. 
-
 - Abonnement à des flux RSS.  
-
 - Création et partage de collections.  
-
 - Commentaires et chat collaboratif.  
-
 - Notifications et suivi des utilisateurs.  
 
 ### 3.3 Prérequis système
@@ -92,9 +76,7 @@ Ce projet vise à centraliser :
 
 ### 4.1 Pré-requis
 - Docker 24+  
-
 - Docker Compose 2+  
-
 - Accès à internet pour télécharger les dépendances  
 
 ### 4.2 Étapes d’installation
@@ -138,9 +120,7 @@ Ensuite :
 ### 6.1 Architecture générale
 
 - Frontend : React + Vite, servi par Nginx.
-
 - Backend : FastAPI, expose une API REST.
-
 - Base de données : PostgreSQL via SQLAlchemy.
 - Worker Celery : tâches asynchrones (mise à jour des flux).
 - Redis : broker et cache.
