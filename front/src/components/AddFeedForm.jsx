@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import API_URL from '../services/api';
 
 export default function AddFeedForm({ collectionId }) {
   const [url, setUrl] = useState('');
@@ -8,7 +9,7 @@ export default function AddFeedForm({ collectionId }) {
     e.preventDefault();
     const token = localStorage.getItem('access_token');
     try {
-      await axios.post(`http://localhost:8000/rss/collections/${collectionId}/feeds`, {
+      await axios.post(`${API_URL}/rss/collections/${collectionId}/feeds`, {
         url
       }, {
         headers: { Authorization: `Bearer ${token}` }

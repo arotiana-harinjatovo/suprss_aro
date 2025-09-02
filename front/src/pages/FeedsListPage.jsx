@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../services/api';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
@@ -29,7 +30,7 @@ export default function FeedListPage() {
       return;
     }
 
-    axios.get('http://localhost:8000/rss/feeds', { headers })
+    axios.get(`${API_URL}/rss/feeds`, { headers })
       .then(res => setFeeds(res.data))
       .catch(err => {
         console.error(err);
@@ -40,7 +41,7 @@ export default function FeedListPage() {
 
   const handleDelete = (feedId) => {
     if (confirm("Voulez-vous vraiment supprimer ce flux ?")) {
-      axios.delete(`http://localhost:8000/rss/feeds/${feedId}`, { headers })
+      axios.delete(`${API_URL}/rss/feeds/${feedId}`, { headers })
         .then(() => {
           setMessage("Flux supprimé.");
           setMessageType("success");
@@ -64,7 +65,7 @@ export default function FeedListPage() {
   };
 
   const handleExport = () => {
-    axios.get(`http://localhost:8000/rss/export?format=${exportFormat}`, {
+    axios.get(`${API_URL}/rss/export?format=${exportFormat}`, {
       headers,
       responseType: 'blob' // important pour télécharger le fichier
     })
@@ -102,7 +103,7 @@ export default function FeedListPage() {
     const formData = new FormData();
     formData.append("file", importFile);
 
-    axios.post("http://localhost:8000/rss/import", formData, {
+    axios.post(`${API_URL}/rss/import`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data"

@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import API_URL from '../services/api';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -19,7 +20,7 @@ function Login() {
     formData.append('password', password);
 
     try {
-      const response = await fetch('http://localhost:8000/user/token', {
+      const response = await fetch(`${API_URL}/user/token`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -47,15 +48,15 @@ function Login() {
   
 
 const handleGoogleLogin = async () => {
-  window.location.href = "http://localhost:8000/auth/google";
+  window.location.href = `${API_URL}/auth/google`;
 };
 
 const handleGithubLogin = async () => {
-  window.location.href = "http://localhost:8000/auth/github";
+  window.location.href = `${API_URL}/auth/github`;
 };
 
 const handleMicrosoftLogin = async () => {
-  window.location.href = "http://localhost:8000/auth/microsoft";
+  window.location.href = `${API_URL}/auth/microsoft`;
 };
 
   return (

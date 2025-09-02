@@ -5,6 +5,7 @@ import {
   removeFriend,
   unfollowUser
 } from '../services/FollowersAPI';
+import API_URL from '../services/api';
 
 const UserSearch = ({ token, currentUserId }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,7 +22,7 @@ const UserSearch = ({ token, currentUserId }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/user/search?query=${encodeURIComponent(searchQuery)}`,
+        `${API_URL}/user/search?query=${encodeURIComponent(searchQuery)}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

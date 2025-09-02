@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../services/api';
 import logo from '/images/Logo_SUPRSS.jpg';
 import '../styles/nav_bar.css';
 
@@ -23,7 +24,7 @@ export default function NavBar() {
       return;
     }
 
-    fetch('http://localhost:8000/user/me', {
+    fetch(`${API_URL}/user/me`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(res => {
@@ -39,7 +40,7 @@ export default function NavBar() {
         navigate('/login');
       });
 
-    fetch('http://localhost:8000/followers/notifications', {
+    fetch(`${API_URL}/followers/notifications`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(res => {
@@ -60,7 +61,7 @@ export default function NavBar() {
     const fetchResults = async () => {
       if (query.trim().length > 0) {
         try {
-          const response = await fetch(`http://localhost:8000/rss/search?q=${encodeURIComponent(query)}`);
+          const response = await fetch(`${API_URL}/rss/search?q=${encodeURIComponent(query)}`);
           const data = await response.json();
           const { articles, collections } = data;
 
@@ -94,7 +95,7 @@ export default function NavBar() {
 
   const markAllAsRead = async () => {
     try {
-      const response = await fetch('http://localhost:8000/followers/notifications/mark_all_read', {
+      const response = await fetch(`${API_URL}/followers/notifications/mark_all_read`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });

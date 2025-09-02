@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../services/api';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
@@ -51,19 +52,19 @@ export default function HomePage() {
       return;
     }
 
-    axios.get('http://localhost:8000/user/me', { headers })
+    axios.get(`${API_URL}/user/me`, { headers })
       .then(res => setUser(res.data))
       .catch(() => navigate('/login'));
 
-    axios.get('http://localhost:8000/rss/collections/', { headers })
+    axios.get(`${API_URL}/rss/collections/`, { headers })
       .then(res => setCollections(res.data))
       .catch(console.error);
 
-    axios.get('http://localhost:8000/rss/feeds/', { headers })
+    axios.get(`${API_URL}/rss/feeds/`, { headers })
       .then(res => setFeeds(res.data))
       .catch(console.error);
 
-    axios.get('http://localhost:8000/rss/articles/', { headers })
+    axios.get(`${API_URL}/rss/articles/`, { headers })
       .then(res => setArticles(res.data))
       .catch(console.error);
   }, [navigate]);
@@ -72,7 +73,7 @@ export default function HomePage() {
   const handleCreateFeed = async (e) => {
     e.preventDefault();
     try {
-  const res = await axios.post('http://localhost:8000/rss/feeds', newFeed, { headers });
+  const res = await axios.post(`${API_URL}/rss/feeds`, newFeed, { headers });
   setFeeds([...feeds, res.data]);
   setNewFeed({
     title: '',
@@ -109,7 +110,7 @@ export default function HomePage() {
     if (!window.confirm("Êtes-vous sûr de vouloir supprimer cet article ?")) return;
 
     try {
-      await axios.delete(`http://localhost:8000/rss/articles/${articleId}`, { headers });
+      await axios.delete(`${API_URL}/rss/articles/${articleId}`, { headers });
       // Mise à jour locale : enlever l'article supprimé
       setArticles(prevArticles => prevArticles.filter(article => article.id !== articleId));
       setMessage("Article supprimé avec succès !");

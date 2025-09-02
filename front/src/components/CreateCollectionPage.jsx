@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../services/api';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import Logout from './Logout';
@@ -15,7 +16,7 @@ export default function CreateCollectionPage() {
   const handleCreateCollection = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/rss/collections/', newCollection, { headers });
+      await axios.post(`${API_URL}/rss/collections/`, newCollection, { headers });
       navigate('/collections');
     } catch (err) {
       console.error(err);

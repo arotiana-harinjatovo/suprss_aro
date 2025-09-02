@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../services/api';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
@@ -21,7 +22,7 @@ const Profil = () => {
   const token = localStorage.getItem('access_token');
 
   useEffect(() => {
-    fetch('http://localhost:8000/user/me', {
+    fetch(`${API_URL}/user/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -47,7 +48,7 @@ const Profil = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    fetch('http://localhost:8000/user/me', {
+    fetch(`${API_URL}/user/me`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ const Profil = () => {
   const handleDeleteAccount = () => {
     if (!window.confirm("Êtes-vous sûr de vouloir supprimer votre compte ?")) return;
 
-    fetch('http://localhost:8000/user/me', {
+    fetch(`${API_URL}/user/me`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

@@ -1,6 +1,7 @@
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
+import API_URL from '../services/api';
 
 export default function ArticleCard({ article, isExpanded, onToggleExpand, onDelete, token, isRead: initialIsRead, isFavorite: initialIsFavorite}) {
   const [isRead, setIsRead] = useState(initialIsRead);
@@ -8,7 +9,7 @@ export default function ArticleCard({ article, isExpanded, onToggleExpand, onDel
 
   const markAsRead = async () => {
     try {
-      await axios.put(`http://localhost:8000/users/articles/${article.id}/read`, {}, {
+      await axios.put(`${API_URL}/users/articles/${article.id}/read`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setIsRead(true);
@@ -19,7 +20,7 @@ export default function ArticleCard({ article, isExpanded, onToggleExpand, onDel
 
   const toggleFavorite = async () => {
     try {
-      await axios.put(`http://localhost:8000/users/articles/${article.id}/favorite`, {}, {
+      await axios.put(`${API_URL}/users/articles/${article.id}/favorite`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setIsFavorite(prev => !prev);

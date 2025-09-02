@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
+import API_URL from '../services/api';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -31,7 +32,7 @@ function ResetPassword() {
     }
 
     try {
-      const response = await fetch('http://localhost:8000/user/reset-password', {
+      const response = await fetch(`${API_URL}/user/reset-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

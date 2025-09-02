@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Pencil } from "lucide-react";
+import API_URL from '../services/api';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
@@ -72,13 +73,13 @@ export default function CollectionIdPage() {
 
   const fetchPermissions = () => {
     axios
-      .get(`http://localhost:8000/rss/collections/${collectionId}/permissions`, { headers })
+      .get(`${API_URL}/rss/collections/${collectionId}/permissions`, { headers })
       .then(res => setPermissions(res.data))
       .catch(console.error);
   };
 
   const fetchCollectionData = () => {
-    axios.get(`http://localhost:8000/rss/collections/${collectionId}`, { headers })
+    axios.get(`${API_URL}/rss/collections/${collectionId}`, { headers })
       .then(res => {
         setCollectionName(res.data.name);
         setCollectionDescription(res.data.description || '');
@@ -96,14 +97,14 @@ export default function CollectionIdPage() {
     fetchCollectionData();
     fetchPermissions();
 
-    axios.get("http://localhost:8000/followers/accepted", { headers })
+    axios.get(`${API_URL}/followers/accepted`, { headers })
       .then(res => setFriends(res.data))
       .catch(console.error);
   }, [collectionId]);
 
   
   useEffect(() => {
-    axios.get("http://localhost:8000/user/me", { headers })
+    axios.get(`${API_URL}/user/me`, { headers })
       .then(res => {
         setCurrentUser(res.data);
         console.log("✅ Utilisateur connecté :", res.data);
@@ -115,7 +116,7 @@ export default function CollectionIdPage() {
   const handleInvite = () => {
     if (!inviteUserId) return;
     axios.post(
-      `http://localhost:8000/rss/collections/${collectionId}/invite/${inviteUserId}`,
+      `${API_URL}/rss/collections/${collectionId}/invite/${inviteUserId}`,
       { role: inviteRole },
       { headers }
     )
@@ -133,7 +134,7 @@ export default function CollectionIdPage() {
   const handleDeleteCollection = async () => {
     if (!window.confirm("Êtes-vous sûr de vouloir supprimer cette collection ?")) return;
     try {
-      await axios.delete(`http://localhost:8000/rss/collections/${collectionId}`, { headers });
+      await axios.delete(`${API_URL}/rss/collections/${collectionId}`, { headers });
       navigate('/collections');
     } catch (error) {
       console.error("Erreur lors de la suppression :", error);
@@ -145,7 +146,7 @@ export default function CollectionIdPage() {
     if (!window.confirm("Êtes-vous sûr de vouloir supprimer ce membre ?")) return;
     setDeletingUserId(userId);
     try {
-      await axios.delete(`http://localhost:8000/rss/collections/${collectionId}/members/${userId}`, { headers });
+      await axios.delete(`${API_URL}/rss/collections/${collectionId}/members/${userId}`, { headers });
       showMessage("Membre supprimé avec succès", "success");
       fetchPermissions();
     } catch (error) {
@@ -169,7 +170,7 @@ export default function CollectionIdPage() {
 
     try {
       await axios.put(
-        `http://localhost:8000/rss/collections/${collectionId}/permissions/${userId}`,
+        `${API_URL}/rss/collections/${collectionId}/permissions/${userId}`,
         updatedPermissions,
         { headers }
       );
@@ -189,7 +190,7 @@ export default function CollectionIdPage() {
 
     try {
       await axios.put(
-        `http://localhost:8000/rss/collections/${collectionId}/edit`,
+        `${API_URL}/rss/collections/${collectionId}/edit`,
         { name: updatedName, description: updatedDescription },
         { headers }
       );
@@ -208,9 +209,9 @@ export default function CollectionIdPage() {
 
     setDeletingArticleId(articleId);
     try {
-      await axios.delete(`http://localhost:8000/rss/collections/${collectionId}/articles/${articleId}`, { headers });
+      await axios.delete(`${API_URL}/rss/collections/${collectionId}/articles/${articleId}`, { headers });
       // Recharge les articles
-      const response = await axios.get(`http://localhost:8000/rss/collections/${collectionId}`, { headers });
+      const response = await axios.get(`${API_URL}/rss/collections/${collectionId}`, { headers });
       setArticles(response.data.articles || []);
       showMessage("Article supprimé avec succès", "success");
     } catch (error) {
@@ -226,9 +227,9 @@ export default function CollectionIdPage() {
 
     setDeletingFeedId(feedId);
     try {
-      await axios.delete(`http://localhost:8000/rss/collections/${collectionId}/feeds/${feedId}`, { headers });
+      await axios.delete(`${API_URL}/rss/collections/${collectionId}/feeds/${feedId}`, { headers });
       // Recharge les feeds
-      const response = await axios.get(`http://localhost:8000/rss/collections/${collectionId}`, { headers });
+      const response = await axios.get(`${API_URL}/rss/collections/${collectionId}`, { headers });
       setFeeds(response.data.feeds || []);
       showMessage("Flux RSS supprimé avec succès", "success");
     } catch (error) {
@@ -241,7 +242,7 @@ export default function CollectionIdPage() {
 
   const handleLeaveCollection = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/rss/collections/${collectionId}/leave`, {
+      const response = await fetch(`${API_URL}/rss/collections/${collectionId}/leave`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

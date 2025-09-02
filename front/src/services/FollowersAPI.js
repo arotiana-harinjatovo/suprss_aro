@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/followers';
+const API_URL = '${API_URL}/followers';
 
 
 export const sendFriendRequest = async (userId, token) => {

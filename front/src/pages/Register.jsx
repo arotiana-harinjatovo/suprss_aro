@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import API_URL from '../services/api';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/index.css'; // Assure-toi que ce fichier contient les styles .message
@@ -47,7 +48,7 @@ function Register() {
     urlEncodedData.append("password", formData.password);
 
     try {
-      const response = await fetch("http://localhost:8000/user/register", {
+      const response = await fetch(`${API_URL}/user/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

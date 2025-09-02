@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../services/api';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
@@ -18,7 +19,7 @@ export default function CollectionsPage() {
       return;
     }
 
-    axios.get('http://localhost:8000/rss/collections/', { headers })
+    axios.get(`${API_URL}/rss/collections/`, { headers })
         .then(res => {
           console.log('Collections API response:', res.data);  // Vérifie la structure ici
           setCollections(res.data);

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Trash2 } from 'lucide-react';
 import CommentSection from './CommentSection';
-
-const API_URL = 'http://localhost:8000';
+import API_URL from '../services/api';
 
 function CollectionArticles({ articles, currentUser, handleDeleteArticle, collectionId }) {
   const token = localStorage.getItem('access_token');

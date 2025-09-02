@@ -1,5 +1,6 @@
 import { Trash2 } from 'lucide-react';
 
+
 function CollectionFeed({ feeds = [], isCreator, handleDeleteFeed }) {
   return (
     <section className="section">

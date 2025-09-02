@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../services/api';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
@@ -16,7 +17,7 @@ export default function FeedEditPage() {
   const headers = { Authorization: `Bearer ${token}` };
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/rss/feeds/${feedId}`, { headers })
+    axios.get(`${API_URL}/rss/feeds/${feedId}`, { headers })
       .then(res => {
         setFeed(res.data);
         setFormData({
@@ -36,7 +37,7 @@ export default function FeedEditPage() {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    axios.put(`http://localhost:8000/rss/feeds/${feedId}`, formData, { headers })
+    axios.put(`${API_URL}/rss/feeds/${feedId}`, formData, { headers })
       .then(() => {
         setMessage("Flux mis à jour !");
         setMessageType("success");

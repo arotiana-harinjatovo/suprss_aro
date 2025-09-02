@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_URL from '../services/api';
 
 const FriendList = () => {
   const [friends, setFriends] = useState([]);
@@ -10,7 +11,7 @@ const FriendList = () => {
   useEffect(() => {
     const token = localStorage.getItem('access_token');
 
-    axios.get('http://localhost:8000/followers/accepted', {
+    axios.get(`${API_URL}/followers/accepted`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

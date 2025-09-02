@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import API_URL from '../services/api';
 
 const CollectionChat = ({ collectionId, accessToken, currentUserId }) => {
   const [messages, setMessages] = useState([]);
@@ -14,7 +15,7 @@ const CollectionChat = ({ collectionId, accessToken, currentUserId }) => {
     let isMounted = true;
 
     axios
-      .get(`http://localhost:8000/ws/collections/${collectionId}/messages`, {
+      .get(`${API_URL}/ws/collections/${collectionId}/messages`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
       .then((res) => {

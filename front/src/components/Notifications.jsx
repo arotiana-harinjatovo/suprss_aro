@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from '../services/api';
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Logout from "../components/Logout";
@@ -18,7 +19,7 @@ const Notification = () => {
       return;
     }
 
-    fetch("http://localhost:8000/followers/notifications", {
+    fetch(`${API_URL}/followers/notifications`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
@@ -35,7 +36,7 @@ const Notification = () => {
 
   const markAsRead = async (id) => {
     try {
-      await fetch(`http://localhost:8000/followers/notifications/${id}/read`, {
+      await fetch(`${API_URL}/followers/notifications/${id}/read`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -49,7 +50,7 @@ const Notification = () => {
 
   const deleteNotification = async (id) => {
     try {
-      await fetch(`http://localhost:8000/followers/notifications/${id}`, {
+      await fetch(`${API_URL}/followers/notifications/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

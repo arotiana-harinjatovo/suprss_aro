@@ -5,6 +5,7 @@ import Select from 'react-select';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
+import API_URL from '../services/api';
 
 export default function AddFeedToCollectionPage() {
   const { collectionId } = useParams();
@@ -27,11 +28,11 @@ export default function AddFeedToCollectionPage() {
       return;
     }
 
-    axios.get('http://localhost:8000/rss/feeds/', { headers })
+    axios.get(`${API_URL}/rss/feeds/`, { headers })
       .then(res => setFeeds(res.data))
       .catch(console.error);
 
-    axios.get('http://localhost:8000/rss/articles/', { headers })
+    axios.get(`${API_URL}/rss/articles/`, { headers })
       .then(res => setArticles(res.data))
       .catch(console.error);
   }, [navigate]);
@@ -57,7 +58,7 @@ export default function AddFeedToCollectionPage() {
     // Si une URL est entrée manuellement, créer le flux
     if (manualFeedUrl) {
       const res = await axios.post(
-        'http://localhost:8000/rss/feeds/',
+        `${API_URL}/rss/feeds/`,
         { 
           title: "Flux personnalisé", // requis
           url: manualFeedUrl,         // requis
@@ -74,7 +75,7 @@ export default function AddFeedToCollectionPage() {
 
     // Ajouter le flux à la collection
     await axios.post(
-      `http://localhost:8000/rss/collections/${collectionId}/feeds/${feedIdToAdd}`,
+      `${API_URL}/rss/collections/${collectionId}/feeds/${feedIdToAdd}`,
       {},
       { headers }
     );
@@ -96,7 +97,7 @@ const handleAddArticle = async () => {
 
   try {
     await axios.post(
-      `http://localhost:8000/rss/collections/${collectionId}/articles/${selectedArticleId}`,
+      `${API_URL}/rss/collections/${collectionId}/articles/${selectedArticleId}`,
       {},
       { headers }
     );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import API_URL from '../services/api';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -12,7 +13,7 @@ function ForgotPassword() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/user/forgot-password', {
+      const response = await fetch(`${API_URL}/user/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

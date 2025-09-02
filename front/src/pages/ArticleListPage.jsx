@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_URL from '../services/api';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Logout from '../components/Logout';
@@ -21,7 +22,7 @@ export default function ArticleListPage() {
       return;
     }
 
-    axios.get('http://localhost:8000/rss/articles', { headers })
+    axios.get( `${API_URL}/rss/articles`, { headers })
       .then(res => setArticles(res.data))
       .catch(err => {
         console.error(err);
@@ -39,7 +40,7 @@ export default function ArticleListPage() {
 
   const handleDeleteArticle = (articleId) => {
     if (confirm("Voulez-vous vraiment supprimer cet article ?")) {
-      axios.delete(`http://localhost:8000/users/articles/${articleId}`, { headers })
+      axios.delete(`${API_URL}/users/articles/${articleId}`, { headers })
         .then(() => {
           setArticles(prev => prev.filter(a => a.article.id !== articleId));
           setMessage("Article supprimé.");
