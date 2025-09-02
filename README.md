@@ -90,3 +90,112 @@ docker-compose up --build -d
 
 # Appliquer les migrations
 docker-compose exec backend alembic upgrade head
+```
+Ensuite :
+- Créer un compte administrateur via l’API ou un script d’initialisation.
+
+## 5. Guide utilisateur
+### 5.1 Premiers pas
+
+- Accéder à l’application via http://localhost:3000.
+
+- Créer un compte ou se connecter via OAuth2 (Google, GitHub, Microsoft).
+
+### 5.2 Navigation
+
+- Profil → Paramètres utilisateur.
+
+- Accueil → Vue générale des flux suivis.
+
+- Collections → Gestion et partage des collections.
+
+- Liste Articles → Articles lus ou favoris.
+
+- Notifications → Suivi des interactions.
+
+### 5.3 Exemples d’utilisation
+
+- Gestion du profil utilisateur.
+
+- Ajouter un flux RSS via son URL.
+
+- Créer une collection et inviter d’autres utilisateurs.
+
+- Lire et commenter un article dans une collection.
+
+- Recherche d'articles et de collection associés.
+
+## 6. Détails techniques
+### 6.1 Architecture générale
+
+- Frontend : React + Vite, servi par Nginx.
+
+- Backend : FastAPI, expose une API REST.
+
+- Base de données : PostgreSQL via SQLAlchemy.
+
+- Worker Celery : tâches asynchrones (mise à jour des flux).
+
+- Redis : broker et cache.
+
+### 6.2 Modèle de données
+
+- Utilisateur : comptes et authentification.
+
+- Flux RSS : abonnement et gestion.
+
+- Collection : regroupement collaboratif.
+
+- Commentaires & Chat : interactions.
+
+- Permissions : gestion des rôles dans une collection.
+
+### 6.3 Référence API (exemples)
+
+- POST /auth/login → Connexion utilisateur.
+
+- GET /feeds/ → Liste des flux suivis.
+
+- POST /collections/ → Créer une nouvelle collection.
+
+- POST /collections/{id}/invite → Inviter un utilisateur.
+
+## 7. Dépannage (Troubleshooting)
+
+- Problème : backend ne démarre pas
+→ Vérifier DATABASE_URL et la disponibilité de PostgreSQL.
+
+- Problème : Celery worker inactif
+→ Vérifier la connexion à Redis (REDIS_URL).
+
+- Erreur 401 (Unauthorized)
+→ Vérifier la configuration OAuth2 et les tokens JWT.
+
+## 8. Maintenance et support
+
+- Mises à jour : appliquer les migrations Alembic avant chaque nouvelle version.
+
+- Monitoring : configurer Sentry pour suivre les erreurs.
+
+- Logs : suivre les logs Docker :
+```bash
+docker-compose logs -f backend
+```
+
+- Contribution : via issues et pull requests GitHub.
+
+## 9. Annexes
+
+- Dépendances Python : voir requirements.txt.
+
+- Dépendances frontend : voir package.json.
+
+- Fichiers Docker : docker-compose.yml, Dockerfile.backend, Dockerfile.frontend.
+
+## 10. Historique des révisions
+
+- v1.0 – Août 2025 : Première version avec backend, frontend, tâches Celery et migrations Alembic.
+
+- v1.1 – Prévu : Ajout de tests automatisés et monitoring avancé.
+
+    - v1.1.1– Prévu : Implémentation de photo de profil
