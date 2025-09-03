@@ -23,7 +23,7 @@ export default function ArticleListPage() {
     }
 
     axios.get( `${API_URL}/rss/articles`, { headers })
-      .then(res => setArticles(res.data))
+      .then(res => setArticles(Array.isArray(res.data) ? res.data : Array.isArray(res.data.articles) ? res.data.articles : []))
       .catch(err => {
         console.error(err);
         setMessage("Erreur lors du chargement des articles.");
