@@ -31,7 +31,7 @@ export default function FeedListPage() {
     }
 
     axios.get(`${API_URL}/rss/feeds`, { headers })
-      .then(res => setFeeds(res.data))
+      .then(res => setFeeds(Array.isArray(res.data) ? res.data : []))
       .catch(err => {
         console.error(err);
         setMessage("Erreur lors du chargement des flux.");
