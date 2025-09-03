@@ -3,41 +3,41 @@ version: '3.9'
 services:
   backend:
     build:
-      context: .app/
-      dockerfile: Dockerfile.backend
+      context: .
+      dockerfile: ./app/Dockerfile.backend
     container_name: fastapi_app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-    volumes:
-      - ./app:/app
-    ports:
-      - "8000:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
     env_file:
       - .env
     depends_on:
       - db
       - redis
+    networks:
+      - backend
+    expose:
+      - "8000"
 
   celery:
     build:
-      context: .app/
-      dockerfile: Dockerfile.celery
+      context: .
+      dockerfile: ./app/Dockerfile.celery
     container_name: celery_worker
-    volumes:
-      - ./app:/app
     env_file:
       - .env
     depends_on:
       - backend
       - redis
+    networks:
+      - backend
+
 
   redis:
     image: redis:7
     container_name: redis
-    ports:
-      - "6379:6379"    
     volumes:
-          - redis_data:/data
-
+      - redis_data:/data
+    networks:
+      - backend
 
   db:
     image: postgres:17
@@ -48,8 +48,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    networks:
+      - backend
 
   frontend:
     build:
@@ -57,22 +57,17 @@ services:
       dockerfile: Dockerfile.frontend
     container_name: vite_frontend
     ports:
-      - "3000:80"
-    depends_on:
-      - backend
-
-  nginx:
-    build:
-      context: ./front
-      dockerfile: Dockerfile.nginx
-    container_name: nginx_proxy
-    ports:
       - "80:80"
     depends_on:
+      - backend
+    networks:
       - frontend
       - backend
-
 
 volumes:
   postgres_data:
   redis_data:
+
+networks:
+  frontend:
+  backend:

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API_URL from '../services/api';
-import logo from '/images/Logo_SUPRSS.jpg';
 import '../styles/nav_bar.css';
 
 export default function NavBar() {
@@ -125,7 +124,7 @@ export default function NavBar() {
       <nav className="navbar">
         <div className="navbar-left">
           <img
-            src={logo}
+            src="/images/Logo_SUPRSS.jpg"
             alt="SUPRSS Logo"
             className="logo-image"
             onClick={() => navigate('/home')}
