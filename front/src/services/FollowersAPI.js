@@ -1,11 +1,12 @@
 import axios from 'axios';
+import API_URL from '../services/api';
 
-const API_URL = '${API_URL}/followers';
+const BASE_URL = `${API_URL}/followers`;
 
 
 export const sendFriendRequest = async (userId, token) => {
   return axios.post(
-    `${API_URL}/friend-request`,
+    `${BASE_URL}/friend-request`,
     { receiver_id: userId },
     {
       headers: {
@@ -18,7 +19,7 @@ export const sendFriendRequest = async (userId, token) => {
 
 
 export const acceptFriendRequest = (friendshipId, token) =>
-  axios.post(`${API_URL}/accept-friend/${friendshipId}`, null, {
+  axios.post(`${BASE_URL}/accept-friend/${friendshipId}`, null, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -26,7 +27,7 @@ export const acceptFriendRequest = (friendshipId, token) =>
 
 
 export const removeFriend = async (friendshipId, token) => {
-  const response = await fetch(`${API_URL}/remove-friend/${friendshipId}`, {
+  const response = await fetch(`${BASE_URL}/remove-friend/${friendshipId}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -43,7 +44,7 @@ export const removeFriend = async (friendshipId, token) => {
 
 
 export const followUser = (followedId, token) =>
-  axios.post(`${API_URL}/follow`, 
+  axios.post(`${BASE_URL}/follow`, 
     { followed_id: followedId },
     {
       headers: {
